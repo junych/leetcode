@@ -14,22 +14,26 @@ public class Solution {
     	
     	result = curr;
     	
-    	do {
+    	while(l1 != null || l2 != null) {
+    		
     		ListNode temp = new ListNode();
     		
-    		if(l1.val > l2.val) {
-    			temp.val = l2.val;
+    		int l1Val = l1 != null ? l1.val : 999;
+    		int l2Val = l2 != null ? l2.val : 999;
+    		
+    		if(l1Val > l2Val) {
+    			temp.val = l2Val;
     			curr.next = temp;
     			curr = curr.next;
     			l2 = l2.next;
     			
     		} else {
-    			temp.val = l1.val;
+    			temp.val = l1Val;
     			curr.next = temp;
     			curr = curr.next;
     			l1 = l1.next;
     		}
-    	} while(l1.next != null || l2.next != null);
+    	}
     	
     	return result.next;
     }
